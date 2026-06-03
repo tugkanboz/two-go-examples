@@ -17,7 +17,7 @@ suite("jsonplaceholder", ({ test }) => {
     await api.get("/users")
       .expectOk()
       .expectJson("[0].id", 1)
-      .expectJsonLength("", 10);
+      .expectJson("", (users) => users.length === 10);
   });
 
   test("POST /posts echoes the created resource", async () => {

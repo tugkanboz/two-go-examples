@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Typed two-go example exercising the shipped type declarations.",
   "scripts": {
-    "test": "node --import tsx --test \"*.test.ts\"",
+    "test": "node --import tsx --test *.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
