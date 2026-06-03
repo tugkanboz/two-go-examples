@@ -1,9 +1,9 @@
 # bdd
 
-BDD style scenarios on top of two-go. A small `feature / scenario / given /
-when / then` layer (in [bdd.mjs](./bdd.mjs), about 30 lines, no dependencies)
-runs through the Node test runner. two-go's throwing assertions are what make
-each step pass or fail.
+BDD style scenarios using two-go's built-in BDD layer, `two-go/bdd`. It gives
+you `feature / scenario / given / when / then`, runner-agnostic, so `scenario()`
+returns an async function you hand to the Node test runner. two-go's throwing
+assertions are what make each step pass or fail.
 
 It tests a small in-memory user service ([service/server.js](./service/server.js))
 with four endpoints, and the service starts in process, so there is nothing to

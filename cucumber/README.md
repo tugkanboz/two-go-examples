@@ -4,8 +4,9 @@ Real Gherkin `.feature` files run with [cucumber-js](https://github.com/cucumber
 where two-go does the HTTP calls and the assertions inside the step definitions.
 
 This is the answer to "where is the `.feature` file?". The other BDD examples
-(`bdd`, `ecommerce-bdd`) use a small JS DSL with no extra dependency. This one
-uses actual Gherkin text and the cucumber runner, which is a dependency.
+(`bdd`, `ecommerce-bdd`) use two-go's built-in `two-go/bdd` layer, which needs
+no extra dependency. This one uses actual Gherkin text and the cucumber runner,
+which is a dependency.
 
 ## Layout
 

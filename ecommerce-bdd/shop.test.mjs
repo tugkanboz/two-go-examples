@@ -1,10 +1,24 @@
 // End to end BDD scenarios for the e-commerce service, run with: node --test.
 // The service starts in process on a random port. Scenarios that need a logged
 // in user register and log in a fresh account so they stay independent.
-import { before, after } from "node:test";
+import { test, before, after } from "node:test";
 import { go } from "two-go";
+import { scenario as makeScenario, given, when, then, and } from "two-go/bdd";
 import { createServer } from "./service/server.js";
-import { feature, scenario, given, when, then, and } from "./bdd.mjs";
+
+// Grouping sugar over two-go/bdd: given/when/then/and and scenario() come from
+// the package; feature() just registers each scenario as a node:test test named
+// "Feature: scenario".
+let currentFeature = null;
+function feature(name, build) {
+  const previous = currentFeature;
+  currentFeature = name;
+  build();
+  currentFeature = previous;
+}
+function scenario(title, steps) {
+  test(currentFeature ? `${currentFeature}: ${title}` : title, makeScenario(steps));
+}
 
 let server;
 let api;
