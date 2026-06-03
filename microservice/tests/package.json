@@ -1,0 +1,8 @@
+{
+  "name": "two-go-example-microservice-tests",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "two-go": "^1.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "two-go-example-basic",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "two-go"
+  },
+  "devDependencies": {
+    "two-go": "^1.0.0"
+  }
+}

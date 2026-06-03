@@ -1,0 +1,62 @@
+# Bring up the microservice with its databases, then run the two-go suite
+# against it and exit with the test result.
+#
+#   docker compose -f docker-compose.test.yml up --build \
+#     --abort-on-container-exit --exit-code-from tests
+#
+#   docker compose -f docker-compose.test.yml down -v   # clean up
+#
+# Services reach each other by name on the compose network: tests -> service,
+# service -> mysql / mssql. Use service names, not localhost.
+
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Your_strong_Pass123"
+    # A reliable DB healthcheck depends on the image tag (sqlcmd path moves), so
+    # readiness is gated through the service's own /health below instead.
+
+  service:
+    # Point this at your microservice. Either build it from a Dockerfile:
+    build: ./service
+    # ...or use a prebuilt image:
+    # image: your-org/your-service:latest
+    environment:
+      MYSQL_URL: "mysql://root:root@mysql:3306/app"
+      MSSQL_URL: "Server=mssql;User Id=sa;Password=Your_strong_Pass123;Encrypt=false"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      mssql:
+        condition: service_started
+    healthcheck:
+      # Adjust the path and port to your service's health endpoint.
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  tests:
+    image: node:20-alpine
+    working_dir: /tests
+    volumes:
+      - ./tests:/tests
+    environment:
+      BASE_URL: "http://service:8080"
+    depends_on:
+      service:
+        condition: service_healthy
+    command: sh -c "npm install --no-audit --no-fund && npx two-go"
