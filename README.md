@@ -12,6 +12,10 @@ Each folder is self contained. Install two-go and run.
 | [bdd](./bdd) | BDD style scenarios (given/when/then) over a user service, with success, validation, and edge cases. |
 | [ecommerce-bdd](./ecommerce-bdd) | A fuller BDD suite (20 scenarios) over a shop API: auth, cart, checkout, orders, addresses. |
 | [cucumber](./cucumber) | Real Gherkin `.feature` files run with cucumber-js, with two-go in the step definitions. |
+| [contract](./contract) | Contract and regression testing: explicit schema, inferred schema, and snapshots. |
+| [async-jobs](./async-jobs) | Wait for async work with `pollUntil` and `eventually`. |
+| [performance](./performance) | A light p95 latency check with `mapLimit`. |
+| [data-driven](./data-driven) | Table driven tests plus faker generated payloads. |
 | [microservice](./microservice) | Test a microservice brought up with Docker Compose alongside MySQL and MSSQL. |
 
 The basic and node-test examples hit a public test API
