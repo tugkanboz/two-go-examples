@@ -1,0 +1,6 @@
+{
+  "default": {
+    "import": ["features/support/*.mjs"],
+    "paths": ["features/**/*.feature"]
+  }
+}

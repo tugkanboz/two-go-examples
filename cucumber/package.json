@@ -1,0 +1,12 @@
+{
+  "name": "two-go-example-cucumber",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "two-go": "^1.0.0"
+  }
+}
