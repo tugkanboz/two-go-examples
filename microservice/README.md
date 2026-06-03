@@ -4,19 +4,24 @@ Test a microservice that you bring up with Docker Compose, alongside MySQL and
 MSSQL. A dedicated `tests` service runs the two-go suite against it over the
 compose network and the whole run exits with the test result.
 
+This example is complete and runs end to end. It ships a small working service
+(plain Node plus `mysql2` and `mssql`) so you can try the whole flow with one
+command, then swap in your own service.
+
 ## Layout
 
 ```
 microservice/
   docker-compose.test.yml   # mysql + mssql + service + tests
-  service/                  # your microservice (add a Dockerfile here)
+  service/                  # the example microservice (server.js + Dockerfile)
   tests/
     package.json            # depends on two-go
     api.twogo.mjs           # the suite, targets http://service:8080
 ```
 
-Point the `service` block in the compose file at your own service: either
-`build: ./service` with a Dockerfile, or `image: your-org/your-service:latest`.
+To test your own service instead, set `image: your-org/your-service:latest` in
+the `service` block (or replace `service/` with your own code and Dockerfile).
+The suite only needs `/health` and `/users` (GET and POST).
 
 ## Run
 
@@ -28,6 +33,21 @@ docker compose -f docker-compose.test.yml up --build \
 - `--exit-code-from tests` makes the whole command exit with the test result,
   which is what you want in CI.
 - `--abort-on-container-exit` stops the databases and service once the tests finish.
+
+The first run is slow: it builds the service image and MSSQL needs around half a
+minute to accept connections. The service retries on startup and the suite waits
+on `/health`, so it just works, it only takes a moment. Later runs are fast.
+
+A passing run ends with something like:
+
+```
+tests-1  | microservice
+tests-1  |   ok health endpoint is ok
+tests-1  |   ok GET /users returns a list
+tests-1  |   ok POST /users creates a user
+tests-1  | 3 passed, 0 failed
+tests-1 exited with code 0
+```
 
 Clean up:
 

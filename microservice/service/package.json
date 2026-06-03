@@ -1,0 +1,13 @@
+{
+  "name": "two-go-example-service",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.0",
+    "mssql": "^11.0.1"
+  }
+}

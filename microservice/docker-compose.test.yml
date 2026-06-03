@@ -36,7 +36,9 @@ services:
     # image: your-org/your-service:latest
     environment:
       MYSQL_URL: "mysql://root:root@mysql:3306/app"
-      MSSQL_URL: "Server=mssql;User Id=sa;Password=Your_strong_Pass123;Encrypt=false"
+      MSSQL_HOST: "mssql"
+      MSSQL_USER: "sa"
+      MSSQL_PASSWORD: "Your_strong_Pass123"
     depends_on:
       mysql:
         condition: service_healthy
