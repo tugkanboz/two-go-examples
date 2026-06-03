@@ -1,0 +1,14 @@
+{
+  "name": "two-go-example-mocha",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example: using two-go inside Mocha (ESM via .mjs) against an in-memory user service.",
+  "scripts": {
+    "test": "mocha \"test/**/*.test.mjs\""
+  },
+  "devDependencies": {
+    "mocha": "^10.4.0",
+    "two-go": "^1.0.0"
+  }
+}

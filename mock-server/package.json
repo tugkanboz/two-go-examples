@@ -1,0 +1,16 @@
+{
+  "name": "two-go-example-mock-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "two-go example: isolating a service from an upstream dependency by mocking the upstream.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "two-go": "^1.0.0"
+  }
+}

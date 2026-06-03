@@ -16,6 +16,13 @@ Each folder is self contained. Install two-go and run.
 | [async-jobs](./async-jobs) | Wait for async work with `pollUntil` and `eventually`. |
 | [performance](./performance) | A light p95 latency check with `mapLimit`. |
 | [data-driven](./data-driven) | Table driven tests plus faker generated payloads. |
+| [jest](./jest) | two-go inside Jest (ESM). |
+| [vitest](./vitest) | two-go inside Vitest. |
+| [mocha](./mocha) | two-go inside Mocha. |
+| [typescript](./typescript) | A typed `.ts` example using the shipped types. |
+| [mock-server](./mock-server) | Isolate a service by mocking its upstream dependency. |
+| [ai](./ai) | The AI layer (test gen, explain, review) with a stub provider, no key needed. |
+| [ci](./ci) | A GitHub Actions workflow that runs every example. |
 | [microservice](./microservice) | Test a microservice brought up with Docker Compose alongside MySQL and MSSQL. |
 
 The basic and node-test examples hit a public test API

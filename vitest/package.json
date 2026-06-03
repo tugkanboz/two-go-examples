@@ -1,0 +1,14 @@
+{
+  "name": "two-go-example-vitest",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example using two-go inside Vitest against an in-memory user service.",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "two-go": "^1.0.0",
+    "vitest": "^2.0.0"
+  }
+}

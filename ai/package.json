@@ -1,0 +1,13 @@
+{
+  "name": "two-go-example-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "two-go AI layer example: generate, review, and explain failures using a stub provider so the tests run offline.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "two-go": "^1.0.0"
+  }
+}
