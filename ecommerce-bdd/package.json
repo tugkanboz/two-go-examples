@@ -1,0 +1,11 @@
+{
+  "name": "two-go-example-ecommerce-bdd",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "two-go": "^1.0.0"
+  }
+}
