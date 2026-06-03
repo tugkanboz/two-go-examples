@@ -3,6 +3,7 @@ Feature: Create user
   I want to create users
   So that they can use the system
 
+  @smoke
   Scenario: Create a user with valid data
     When I create a user named "Ada" with email "ada@example.com"
     Then the response status should be 201

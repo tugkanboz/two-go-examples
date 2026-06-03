@@ -1,6 +1,7 @@
 {
   "default": {
     "import": ["features/support/*.mjs"],
-    "paths": ["features/**/*.feature"]
+    "paths": ["features/**/*.feature"],
+    "format": ["progress", "html:reports/cucumber.html"]
   }
 }

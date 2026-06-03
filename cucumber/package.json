@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "test:smoke": "cucumber-js --tags @smoke"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.0.0",

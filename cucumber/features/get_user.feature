@@ -3,6 +3,7 @@ Feature: Get user
   I want to fetch a user by id
   So that I can show their details
 
+  @smoke
   Scenario: Get an existing user
     Given a user named "Grace" exists
     When I get that user by id
